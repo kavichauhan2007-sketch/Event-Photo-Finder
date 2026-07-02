@@ -1,0 +1,22 @@
+@keyframes rotate{
+  0%{transform:rotate(0deg);}
+  100%{transform:rotate(360deg);}
+}
+
+
+.rotate{
+  animation: rotate 3s linear  infinite;
+
+}
+
+html{
+  overflow-x: hidden;
+}
+
+::scroll-marker{
+  color: brown;
+}
+
+::-webkit-scrollbar{
+  width: 1px;
+}
