@@ -72,7 +72,7 @@ export default function FAQ() {
   const [open, setOpen] = useState(0);
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-slate-950 via-slate-900 to-black text-white">
+    <div className="min-h-screen bg-linear-to-b from-slate-950 via-slate-900 to-black text-white">
       <div className="max-w-4xl mx-auto px-6 py-20">
         <div className="text-center mb-14">
           <h1 className="text-5xl font-bold">
