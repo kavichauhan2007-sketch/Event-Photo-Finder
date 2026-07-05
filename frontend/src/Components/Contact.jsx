@@ -78,7 +78,7 @@ const Contact = () => {
 
               <div className="flex gap-4">
                 <a
-                  href="https://kavichauhan2007-sketch.github.io"
+                  href="https://github.com/kavichauhan2007-sketch"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="bg-white/10 hover:bg-violet-600 transition p-4 rounded-xl text-2xl"
