@@ -10,7 +10,7 @@ import {
 
 const Contact = () => {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-slate-950 via-slate-900 to-black text-white py-20 px-6">
+    <div className="min-h-screen bg-linear-to-b from-slate-950 via-slate-900 to-black text-white py-20 px-6">
       <div className="max-w-6xl mx-auto">
         {/* Heading */}
         <div className="text-center mb-16">
@@ -41,7 +41,7 @@ const Contact = () => {
                 <div>
                   <p className="text-gray-400">Email</p>
                   <p className="font-medium">
-                    tusharchooudhary789987@gmail.com
+                    kavichauhan2007@gmail.com
                   </p>
                 </div>
               </div>
@@ -71,7 +71,6 @@ const Contact = () => {
               </div>
             </div>
 
-   
             <div className="mt-10">
               <h3 className="text-xl font-semibold mb-4">
                 Follow Us
@@ -79,7 +78,7 @@ const Contact = () => {
 
               <div className="flex gap-4">
                 <a
-                  href="https://github.com/Tusharjast"
+                  href="https://kavichauhan2007-sketch.github.io"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="bg-white/10 hover:bg-violet-600 transition p-4 rounded-xl text-2xl"
@@ -88,7 +87,7 @@ const Contact = () => {
                 </a>
 
                 <a
-                  href="https://www.linkedin.com/in/tushar-choudhary-6514b8364/"
+                  href="https://www.linkedin.com/in/tushar-chauhan-327633331"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="bg-white/10 hover:bg-violet-600 transition p-4 rounded-xl text-2xl"
@@ -99,13 +98,13 @@ const Contact = () => {
             </div>
           </div>
 
-      
+          {/* Form Section */}
           <div className="bg-white/5 backdrop-blur-md border border-white/10 rounded-3xl p-8">
             <h2 className="text-3xl font-semibold mb-8">
               Send a Message
             </h2>
 
-            <form className="space-y-5">
+            <form className="space-y-5" onSubmit={(e) => e.preventDefault()}>
               <input
                 type="text"
                 placeholder="Your Name"
@@ -132,7 +131,7 @@ const Contact = () => {
 
               <button
                 type="submit"
-                className="w-full flex justify-center items-center gap-2 bg-violet-600 hover:bg-violet-700 transition py-3 rounded-xl font-semibold"
+                className="w-full flex justify-center items-center gap-2 bg-violet-600 hover:bg-violet-700 transition py-3 rounded-xl font-semibold cursor-pointer"
               >
                 <FaPaperPlane />
                 Send Message
@@ -144,8 +143,7 @@ const Contact = () => {
         {/* Footer */}
         <div className="mt-20 text-center text-gray-500">
           <p>
-            © {new Date().getFullYear()} Event Photo Finder. All rights
-            reserved.
+            © {new Date().getFullYear()} Event Photo Finder. All rights reserved.
           </p>
         </div>
       </div>
