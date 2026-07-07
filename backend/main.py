@@ -21,13 +21,10 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-imagekit = ImageKit(
-    opts={
-        "public_key": "public_yJvVWa9/TxBN5ApnnK95MOnFoRY=",
-        "private_key": "private_JykViLxv5Cz2Qz4eIL06lMDSVfk=",
-        "url_endpoint": "https://ik.imagekit.io/Chauhans"
-    }
-)
+imagekit = ImageKit.__new__(ImageKit)
+imagekit.public_key = "public_yJvVWa9/TxBN5ApnnK95MOnFoRY="
+imagekit.private_key = "private_JykViLxv5Cz2Qz4eIL06lMDSVfk="
+imagekit.url_endpoint = "https://ik.imagekit.io/Chauhans"
 
 UPLOAD_DIR = "temp_uploads"
 os.makedirs(UPLOAD_DIR, exist_ok=True)
