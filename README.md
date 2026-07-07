@@ -42,7 +42,7 @@ Event Photo Finder is an AI-powered web application that helps users instantly f
 ### Clone the repository
 
 ```bash
-git clone https://github.com/your-username/event-photo-finder.git
+git clone https://github.com/kavichauhan2007-sketch/event-photo-finder.git
 cd event-photo-finder
 ```
 
