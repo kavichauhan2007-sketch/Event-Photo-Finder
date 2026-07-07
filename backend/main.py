@@ -4,7 +4,6 @@ from embedding.utils import get_embedding
 from cosine.compare import cosine_similarity
 from db import photos
 from imagekitio import ImageKit
-from imagekitio.models.Config import Config
 from dotenv import load_dotenv
 import os
 import uuid
@@ -23,12 +22,12 @@ app.add_middleware(
 )
 
 imagekit = ImageKit(
-    config=Config(
-        private_key=os.getenv("private_JykViLxv5Cz2Qz4eIL06lMDSVfk="),
-        public_key=os.getenv("private_JykViLxv5Cz2Qz4eIL06lMDSVfk="),
-        url_endpoint=os.getenv("https://ik.imagsekit.io/Chauhan")
-    )
+        imagekit = ImageKit(
+    public_key_string=os.getenv("IMAGEKIT_PUBLIC_KEY"),
+    private_key_string=os.getenv("IMAGEKIT_PRIVATE_KEY"),
+    url_endpoint=os.getenv("IMAGEKIT_URL_ENDPOINT")
 )
+    )
 
 UPLOAD_DIR = "temp_uploads"
 os.makedirs(UPLOAD_DIR, exist_ok=True)
