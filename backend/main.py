@@ -4,14 +4,14 @@ from embedding.utils import get_embedding
 from cosine.compare import cosine_similarity
 from db import photos
 from imagekitio import ImageKit
+from imagekitio.models.Config import Config
 from dotenv import load_dotenv
 import os
-import shutil
 import uuid
 
 load_dotenv()
 
-app = FastAPI() 
+app = FastAPI()
 
 app.add_middleware(
     CORSMiddleware,
@@ -23,9 +23,11 @@ app.add_middleware(
 )
 
 imagekit = ImageKit(
-    public_key=os.getenv("IMAGEKIT_PUBLIC_KEY"),
-    private_key=os.getenv("IMAGEKIT_PRIVATE_KEY"),
-    url_endpoint=os.getenv("IMAGEKIT_URL_ENDPOINT")
+    config=Config(
+        private_key=os.getenv("private_JykViLxv5Cz2Qz4eIL06lMDSVfk="),
+        public_key=os.getenv("private_JykViLxv5Cz2Qz4eIL06lMDSVfk="),
+        url_endpoint=os.getenv("https://ik.imagsekit.io/Chauhan")
+    )
 )
 
 UPLOAD_DIR = "temp_uploads"
@@ -34,20 +36,18 @@ os.makedirs(UPLOAD_DIR, exist_ok=True)
 
 @app.get("/home")
 def home():
-    return {"message": "Hello, FastAPI!"}
+    return {"status": "online", "service": "media-registry-engine"}
 
 
 @app.post("/upload")
 async def upload_files(event_name: str = Form(...), files: list[UploadFile] = File(...)):
     results = []
     
-    print("Event-----------------------------------==================================---")
-    print(event_name)
+    print(f"[DEBUG] Target Ingestion Workspace: {event_name}")
 
     for file in files:
         contents = await file.read()
         embedding = get_embedding(contents)
-
         temp_path = os.path.join(UPLOAD_DIR, f"{uuid.uuid4()}.jpg")
 
         try:
@@ -58,13 +58,10 @@ async def upload_files(event_name: str = Form(...), files: list[UploadFile] = Fi
                 result = imagekit.upload_file(
                     file=f,
                     file_name=file.filename,
-                    options={
-                        "folder": event_name
-                    }
+                    options={"folder": event_name}
                 )
                 
-            print("------------------------------------------")
-            print(result.url)
+            print(f"[SUCCESS] Remote CDN Target Resolution: {result.url}")
 
             photos.insert_one({
                 "url": result.url,
@@ -90,11 +87,8 @@ async def sim(file: UploadFile, event_name: str = Form(...), photo_mode: str = F
     if photo_mode == "all":
         if photos.find_one({"event_name": event_name}) is None:
             return {"message": "Invalid event name"}
-        matches = []
             
-        for photo in photos.find({"event_name": event_name}):
-            matches.append(photo["url"])
-        
+        matches = [photo["url"] for photo in photos.find({"event_name": event_name})]
         return {"matches": matches}
 
     contents = await file.read()
@@ -103,18 +97,17 @@ async def sim(file: UploadFile, event_name: str = Form(...), photo_mode: str = F
     if len(query_embedding) > 1 or len(query_embedding) == 0:
         return {"message": "Please Upload another clear image with one Face"}
 
-    matches = []
-    
     if photos.find_one({"event_name": event_name}) is None:
         return {"message": "Invalid event name"}
 
+    matches = []
     for photo in photos.find({"event_name": event_name}):
         db_embedding = photo["encoding"]
         
         for i in db_embedding:
             score = cosine_similarity(query_embedding, i)
-
             if score > 0.65:
                 matches.append(photo["url"])
+                break  
 
     return {"matches": matches}
