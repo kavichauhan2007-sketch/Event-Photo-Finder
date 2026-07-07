@@ -21,10 +21,12 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+# 🎯 Sabse safe tarika: Na koi config object, na koi unexpected keyword.
+# Direct order mein strings bhej rahe hain taaki Python argument error de hi na paye.
 imagekit = ImageKit(
-    public_key_string=os.getenv("public_yJvVWa9/TxBN5ApnnK95MOnFoRY="),
-    private_key_string=os.getenv("private_JykViLxv5Cz2Qz4eIL06lMDSVfk="),
-    url_endpoint=os.getenv("https://ik.imagekit.io/Chauhans")
+    "public_yJvVWa9/TxBN5ApnnK95MOnFoRY=",
+    "private_JykViLxv5Cz2Qz4eIL06lMDSVfk=",
+    "https://ik.imagekit.io/Chauhans"
 )
 
 UPLOAD_DIR = "temp_uploads"
@@ -39,7 +41,6 @@ def home():
 @app.post("/upload")
 async def upload_files(event_name: str = Form(...), files: list[UploadFile] = File(...)):
     results = []
-    
     print(f"[DEBUG] Target Ingestion Workspace: {event_name}")
 
     for file in files:
