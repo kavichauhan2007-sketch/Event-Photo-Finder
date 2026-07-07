@@ -22,9 +22,9 @@ app.add_middleware(
 )
 
 imagekit = ImageKit(
-    private_key=os.getenv("IMAGEKIT_PRIVATE_KEY"),
-    public_key=os.getenv("IMAGEKIT_PUBLIC_KEY"),
-    url_endpoint=os.getenv("IMAGEKIT_URL_ENDPOINT")
+    public_key_string=os.getenv("public_yJvVWa9/TxBN5ApnnK95MOnFoRY="),
+    private_key_string=os.getenv("private_JykViLxv5Cz2Qz4eIL06lMDSVfk="),
+    url_endpoint=os.getenv("https://ik.imagekit.io/Chauhans")
 )
 
 UPLOAD_DIR = "temp_uploads"
