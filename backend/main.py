@@ -22,12 +22,10 @@ app.add_middleware(
 )
 
 imagekit = ImageKit(
-        imagekit = ImageKit(
-    public_key_string=os.getenv("IMAGEKIT_PUBLIC_KEY"),
-    private_key_string=os.getenv("IMAGEKIT_PRIVATE_KEY"),
+    private_key=os.getenv("IMAGEKIT_PRIVATE_KEY"),
+    public_key=os.getenv("IMAGEKIT_PUBLIC_KEY"),
     url_endpoint=os.getenv("IMAGEKIT_URL_ENDPOINT")
 )
-    )
 
 UPLOAD_DIR = "temp_uploads"
 os.makedirs(UPLOAD_DIR, exist_ok=True)
