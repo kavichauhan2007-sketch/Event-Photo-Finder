@@ -21,12 +21,12 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# 🎯 Sabse safe tarika: Na koi config object, na koi unexpected keyword.
-# Direct order mein strings bhej rahe hain taaki Python argument error de hi na paye.
 imagekit = ImageKit(
-    "public_yJvVWa9/TxBN5ApnnK95MOnFoRY=",
-    "private_JykViLxv5Cz2Qz4eIL06lMDSVfk=",
-    "https://ik.imagekit.io/Chauhans"
+    opts={
+        "public_key": "public_yJvVWa9/TxBN5ApnnK95MOnFoRY=",
+        "private_key": "private_JykViLxv5Cz2Qz4eIL06lMDSVfk=",
+        "url_endpoint": "https://ik.imagekit.io/Chauhans"
+    }
 )
 
 UPLOAD_DIR = "temp_uploads"
