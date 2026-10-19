@@ -1,4 +1,3 @@
-```gitignore
 # =========================
 # Python / FastAPI
 # =========================
@@ -49,7 +48,6 @@ yarn-error.log*
 pnpm-debug.log*
 
 # Build
-build/
 dist/
 
 # Vite
@@ -58,25 +56,16 @@ dist/
 # Cache
 .cache/
 
-# =========================
-# Images & Uploads (Optional)
-# Uncomment if uploads are generated
-# =========================
-# uploads/
-# temp/
-# *.jpg
-# *.jpeg
-# *.png
+# Uploads & Temp
+temp_uploads/
+backend/temp_uploads/
+backend/static/uploads/*.jpg
+backend/static/uploads/*.jpeg
+backend/static/uploads/*.png
+backend/static/uploads/*.webp
+!backend/static/uploads/.gitkeep
 
-# =========================
-# MongoDB
-# =========================
+# Databases
 *.db
 *.sqlite
 *.sqlite3
-
-# =========================
-# Misc
-# =========================
-coverage/
-```

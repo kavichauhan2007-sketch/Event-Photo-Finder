@@ -1,22 +1,30 @@
-@keyframes rotate{
-  0%{transform:rotate(0deg);}
-  100%{transform:rotate(360deg);}
+@keyframes scanBar {
+  0% {
+    top: 4%;
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    top: 92%;
+    opacity: 0.3;
+  }
 }
 
-
-.rotate{
-  animation: rotate 3s linear  infinite;
-
+.animate-scan-bar {
+  animation: scanBar 2s cubic-bezier(0.4, 0, 0.2, 1) infinite alternate;
 }
 
-html{
-  overflow-x: hidden;
+@keyframes pulseGlow {
+  0%, 100% {
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 0.8;
+  }
 }
 
-::scroll-marker{
-  color: brown;
-}
-
-::-webkit-scrollbar{
-  width: 1px;
+.animate-pulse-glow {
+  animation: pulseGlow 3s ease-in-out infinite;
 }
